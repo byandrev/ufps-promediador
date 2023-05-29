@@ -18,10 +18,12 @@ function TableSubjects({ openModal }) {
           Añadir
         </Button>
       </Flex>
-      <Table>
-        <TableSubjectsHead />
-        <TableSubjectsBody subjects={subjects} />
-      </Table>
+      <Box overflowX="scroll">
+        <Table>
+          <TableSubjectsHead />
+          <TableSubjectsBody subjects={subjects} />
+        </Table>
+      </Box>
     </Box>
   );
 }
