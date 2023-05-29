@@ -3,7 +3,6 @@ import {
   Button,
   FormControl,
   Grid,
-  Heading,
   Input,
   NumberDecrementStepper,
   NumberIncrementStepper,

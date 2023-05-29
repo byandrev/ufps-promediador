@@ -1,14 +1,11 @@
 import {
-  Button,
-  Grid,
   Modal,
   ModalBody,
   ModalCloseButton,
   ModalContent,
   ModalFooter,
   ModalHeader,
-  ModalOverlay,
-  useDisclosure
+  ModalOverlay
 } from "@chakra-ui/react";
 import FormSubject from "./FormSubject.jsx";
 

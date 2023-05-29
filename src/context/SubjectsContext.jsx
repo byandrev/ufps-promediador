@@ -7,10 +7,8 @@ export default function SubjectsProvider({ children }) {
 
   const value = {
     subjects,
-    setSubjects,
+    setSubjects
   };
 
-  return (
-    <SubjectsContext.Provider value={value}>{children}</SubjectsContext.Provider>
-  );
+  return <SubjectsContext.Provider value={value}>{children}</SubjectsContext.Provider>;
 }

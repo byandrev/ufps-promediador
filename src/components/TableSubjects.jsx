@@ -1,4 +1,4 @@
-import { Box, Button, Flex, Heading, Table, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Table } from "@chakra-ui/react";
 import useSubjects from "../hooks/useSubjects.js";
 import TableSubjectsHead from "./TableSubjectsHead.jsx";
 import TableSubjectsBody from "./TableSubjectsBody.jsx";

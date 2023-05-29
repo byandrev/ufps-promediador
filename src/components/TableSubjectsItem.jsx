@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { Button, Flex, Td, Tr } from "@chakra-ui/react";
 import { CheckIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import InputExam from "./InputExam.jsx";
@@ -14,10 +14,10 @@ function TableSubjectsItem({ subject }) {
   const [def, setDef] = useState("");
   const { updateSubject, deleteSubject } = useSubjects();
 
-  const handleGetDef = () => {
+  const handleGetDef = useCallback(() => {
     let ans = getDefinitive(examOne, examTwo, examThree, finalExam);
     setDef(ans);
-  };
+  }, [examOne, examTwo, examThree, finalExam]);
 
   const handleClickDelete = () => {
     deleteSubject(subject.id);

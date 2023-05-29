@@ -1,9 +1,6 @@
 import { Box, Heading, Text } from "@chakra-ui/react";
-import useSubjects from "../hooks/useSubjects.js";
 
 function Result() {
-  const { subjects } = useSubjects();
-
   return (
     <Box>
       <Heading as="h3" size="md" mb={2}>
