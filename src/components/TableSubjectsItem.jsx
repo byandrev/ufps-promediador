@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
-import { Button, Checkbox, Flex, Td, Tr } from "@chakra-ui/react";
-import { CheckIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
+import { Button, Checkbox, Flex, Td, Tooltip, Tr } from "@chakra-ui/react";
+import { CheckIcon, DeleteIcon, EditIcon, InfoIcon } from "@chakra-ui/icons";
 import InputExam from "./InputExam.jsx";
 import useSubjects from "../hooks/useSubjects.js";
 import { getDefinitive } from "../utils/calculations.js";
@@ -13,6 +13,7 @@ function TableSubjectsItem({ subject }) {
   const [finalExam, setFinalExam] = useState(subject.finalExam || "");
   const [def, setDef] = useState("");
   const { updateSubject, deleteSubject } = useSubjects();
+  const noteNeed = ((3 - def) / 0.3).toFixed(2);
 
   const handleGetDef = useCallback(() => {
     let ans = getDefinitive(examOne, examTwo, examThree, finalExam);
@@ -68,7 +69,14 @@ function TableSubjectsItem({ subject }) {
       </Td>
 
       <Td>
-        <InputExam value={finalExam} setValue={setFinalExam} isEditable={isEditable} />
+        <Flex alignItems="center" gap={2}>
+          {subject.enabled && (
+            <Tooltip label={noteNeed <= 0 ? "Ya pasaste" : noteNeed}>
+              <InfoIcon color="#aaa" cursor="pointer" />
+            </Tooltip>
+          )}
+          <InputExam value={finalExam} setValue={setFinalExam} isEditable={isEditable} />
+        </Flex>
       </Td>
 
       <Td>{def}</Td>
