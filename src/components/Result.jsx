@@ -1,4 +1,4 @@
-import { Badge, Box, Heading, Text } from "@chakra-ui/react";
+import { Badge, Box, Text } from "@chakra-ui/react";
 import useSubjects from "../hooks/useSubjects.js";
 import { useEffect, useState } from "react";
 
@@ -29,10 +29,7 @@ function Result() {
 
   return (
     <Box>
-      <Heading as="h3" size="md" mb={2}>
-        Promedio
-      </Heading>
-      <Text>
+      <Text align="right">
         Tu promedio es de{" "}
         <Badge fontSize=".9em" px={2}>
           {def}

@@ -48,7 +48,7 @@ function TableSubjectsItem({ subject }) {
   }, [handleGetDef]);
 
   return (
-    <Tr>
+    <Tr opacity={subject.enabled ? 1 : 0.4}>
       <Td>
         <Checkbox isChecked={subject.enabled} onChange={handleToggleEnabled} />
       </Td>
