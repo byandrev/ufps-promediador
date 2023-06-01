@@ -12,14 +12,14 @@ function TableSubjectsItem({ subject }) {
   const [examThree, setExamThree] = useState(subject.exams[2] || "");
   const [finalExam, setFinalExam] = useState(subject.finalExam || "");
   const [def, setDef] = useState("");
-  const { subjects, updateSubject, deleteSubject } = useSubjects();
+  const { updateSubject, deleteSubject } = useSubjects();
 
   const handleGetDef = useCallback(() => {
     let ans = getDefinitive(examOne, examTwo, examThree, finalExam);
     setDef(ans);
   }, [examOne, examTwo, examThree, finalExam]);
 
-  const handleToggleEnabled = (evt) => {
+  const handleToggleEnabled = () => {
     updateSubject(subject.id, {
       enabled: !subject.enabled
     });
