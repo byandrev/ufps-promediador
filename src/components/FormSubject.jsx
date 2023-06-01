@@ -36,7 +36,8 @@ function FormSubject({ closeModal }) {
       credits,
       exams: [null, null, null],
       def: null,
-      finalExam: null
+      finalExam: null,
+      enabled: true
     });
   };
 

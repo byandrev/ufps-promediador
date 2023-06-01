@@ -4,6 +4,7 @@ function TableSubjectsHead() {
   return (
     <Thead>
       <Tr>
+        <Th></Th>
         <Th>Nombre</Th>
         <Th>Créditos</Th>
         <Th>1P</Th>

@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useState } from "react";
-import { Button, Flex, Td, Tr } from "@chakra-ui/react";
+import { Button, Checkbox, Flex, Td, Tr } from "@chakra-ui/react";
 import { CheckIcon, DeleteIcon, EditIcon } from "@chakra-ui/icons";
 import InputExam from "./InputExam.jsx";
 import useSubjects from "../hooks/useSubjects.js";
@@ -12,12 +12,18 @@ function TableSubjectsItem({ subject }) {
   const [examThree, setExamThree] = useState(subject.exams[2] || "");
   const [finalExam, setFinalExam] = useState(subject.finalExam || "");
   const [def, setDef] = useState("");
-  const { updateSubject, deleteSubject } = useSubjects();
+  const { subjects, updateSubject, deleteSubject } = useSubjects();
 
   const handleGetDef = useCallback(() => {
     let ans = getDefinitive(examOne, examTwo, examThree, finalExam);
     setDef(ans);
   }, [examOne, examTwo, examThree, finalExam]);
+
+  const handleToggleEnabled = (evt) => {
+    updateSubject(subject.id, {
+      enabled: !subject.enabled
+    });
+  };
 
   const handleClickDelete = () => {
     deleteSubject(subject.id);
@@ -29,11 +35,12 @@ function TableSubjectsItem({ subject }) {
 
   const handleClickSave = () => {
     setIsEditable(false);
+    handleGetDef();
     updateSubject(subject.id, {
       exams: [examOne, examTwo, examThree],
-      finalExam
+      finalExam,
+      def
     });
-    handleGetDef();
   };
 
   useEffect(() => {
@@ -42,6 +49,9 @@ function TableSubjectsItem({ subject }) {
 
   return (
     <Tr>
+      <Td>
+        <Checkbox isChecked={subject.enabled} onChange={handleToggleEnabled} />
+      </Td>
       <Td>{subject.name}</Td>
       <Td>{subject.credits}</Td>
 

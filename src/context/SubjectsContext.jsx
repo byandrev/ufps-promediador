@@ -4,11 +4,11 @@ import { getSubjects, saveSubjects } from "../utils/localStorage.js";
 export const SubjectsContext = createContext();
 
 export default function SubjectsProvider({ children }) {
-  const [subjects, setSubjects] = useState(null);
+  const [subjects, setSubjects] = useState([]);
 
   useEffect(() => {
     const subjectsSaved = getSubjects();
-    if (subjectsSaved) setSubjects(subjectsSaved);
+    if (subjectsSaved != null && subjectsSaved.length > 0) setSubjects(subjectsSaved);
   }, []);
 
   useEffect(() => {
